@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.spring.demo.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.cloud.spring.demo.entity.UserBean">
+        <id column="user_id" property="userId" />
+        <id column="user_name" property="userName" />
+        <id column="user_password" property="userPassword" />
+        <id column="user_create_time" property="userCreateTime" />
+        <id column="role_name" property="roleName" />
+    </resultMap>
+    
+    <sql id="BaseColumnList">
+        user_id, user_name, user_password, user_create_time
+    </sql>
+
+</mapper>

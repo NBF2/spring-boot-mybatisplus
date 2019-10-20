@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cloud.spring.demo.mapper.RoleMapper">
+    <resultMap id="BaseResultMap" type="com.cloud.spring.demo.entity.RoleBean">
+        <id column="role_id" property="roleId" />
+        <id column="role_name" property="roleName" />
+        <id column="role_description" property="roleDescription" />
+        <id column="role_create_time" property="roleCreateTime" />
+    </resultMap>
+
+    <sql id="BaseColumnList">
+        role_id, role_name, role_description, role_create_time
+    </sql>
+
+</mapper>
