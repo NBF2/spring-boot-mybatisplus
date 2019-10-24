@@ -65,6 +65,11 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>3.0.7.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>3.0.7.1</version>
+        </dependency>
         <!--mybatis plus end-->
 
         <!--springboot 集成swagger2-->
