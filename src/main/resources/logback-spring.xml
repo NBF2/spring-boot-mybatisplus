@@ -14,8 +14,8 @@
 
     <springProfile name="prod,test">
         <!--ERROR级别的日志放在logErrorDir目录下，INFO级别的日志放在logInfoDir目录下-->
-        <property name="logback.logErrorDir" value="d:\\demo\\logs\\error"/>
-        <property name="logback.logInfoDir" value="d:\\demo\\logs\\info"/>
+        <property name="logback.logErrorDir" value="c:\\demo\\logs\\error"/>
+        <property name="logback.logInfoDir" value="c:\\demo\\logs\\info"/>
         <property name="logback.appName" value="demo"/>
         <contextName>${logback.appName}</contextName>
 

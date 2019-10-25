@@ -9,7 +9,7 @@ import java.security.NoSuchAlgorithmException;
  *
  * @Description: SHA,Secure Hash Algorithm 安全散列算法
  *
- * @author: 
+ * @author: Administrator
  * @date: 2019/10/24
  *
  * @modified by:

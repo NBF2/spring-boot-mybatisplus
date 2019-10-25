@@ -6,7 +6,7 @@ import org.apache.tomcat.util.codec.binary.Base64;
  *
  * @Description: Base64是网络上最常见的用于传输8Bit字节代码的编码方式之一
  *
- * @author: 
+ * @author: Administrator
  * @date: 2019/10/24
  *
  * @modified by:

@@ -11,7 +11,7 @@ import java.security.SecureRandom;
 
 /**
  * @Description: AES，Advanced Encryption Standard，高级加密标准。是一种对称加密算法。
- * @author: d17632
+ * @author: Administrator
  * @date: 2019/10/24
  * @modified by:
  * @modified date:

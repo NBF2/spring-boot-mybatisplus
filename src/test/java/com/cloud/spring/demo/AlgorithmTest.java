@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  *
- * @Description:
+ * @Description: Administrator
  *
  * @author: 
  * @date: 2019/10/24
@@ -61,9 +61,9 @@ public class AlgorithmTest {
         RSAPublicKey rsaPublicKey = RSAUtil.getPublicKey();
         RSAPrivateKey rsaPrivateKey =RSAUtil.getPrivateKey();
         String message = "123456";
-        System.out.println("将要加密的信息：" + message
-                    + ", 生成的公钥：" + Base64.encodeBase64String(rsaPublicKey.getEncoded())
-                    + ", 生成的私钥：" + Base64.encodeBase64String(rsaPrivateKey.getEncoded()));
+        System.out.println("将要加密的信息：" + message);
+        System.out.println("生成的公钥：" + Base64.encodeBase64String(rsaPublicKey.getEncoded()));
+        System.out.println("生成的私钥：" + Base64.encodeBase64String(rsaPrivateKey.getEncoded()));
         String encryptMessage = RSAUtil.encryptByPrivateKey(message, rsaPrivateKey);
         System.out.println("私钥加密后的信息：" + encryptMessage);
         String decryptMessage = RSAUtil.decryptByPublicKey(encryptMessage, rsaPublicKey);

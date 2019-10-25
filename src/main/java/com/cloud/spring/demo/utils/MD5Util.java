@@ -8,7 +8,7 @@ import java.security.NoSuchAlgorithmException;
 /**
  * @Description: MD5, Message-Digest Algorithm 5（信息摘要算法-5）
  * 能够将任意长度的字符，经过MD5加密后，生成32个字符
- * @author: d17632
+ * @author: Administrator
  * @date: 2019/10/24
  * @modified by:
  * @modified date:
