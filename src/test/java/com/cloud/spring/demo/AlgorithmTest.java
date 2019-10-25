@@ -77,4 +77,64 @@ public class AlgorithmTest {
         boolean signVerfy = RSAUtil.verify(message.getBytes(), rsaPublicKey, signMessage);
         System.out.println("公钥验签结果：" + signVerfy);
     }
+
+    @Test
+    public void DSATest() throws Exception {
+        DSAUtil.initKey();
+        String dsaPublicKey = DSAUtil.getPublicKey();
+        String dsaPrivateKey = DSAUtil.getPrivateKey();
+        String message = "123456";
+        System.out.println("生成的公钥：" + dsaPublicKey);
+        System.out.println("生成的私钥：" + dsaPrivateKey);
+        String signMessage = DSAUtil.sign(message.getBytes(), dsaPrivateKey);
+        System.out.println("私钥签名后的信息：" + signMessage);
+        boolean verifyStatus = DSAUtil.verify(message.getBytes(), dsaPublicKey, signMessage);
+        System.out.println("公钥验签结果：" + verifyStatus);
+    }
+
+    private String password = "123456";
+    private String alias = "tomcat";
+    private String certificatePath = "c:\\mycerts.cer";
+    private String keyStorePath = "c:\\mykeystore.keystore";
+
+    @Test
+    public void test() throws Exception {
+        System.out.println("公钥加密——私钥解密");
+        String message = "abcdefg";
+        byte[] data = message.getBytes();
+
+        byte[] encryptMessage = CertificateUtil.encryptByPublicKey(data, certificatePath);
+
+        byte[] decryptMessage = CertificateUtil.decryptByPrivateKey(encryptMessage, keyStorePath, alias, password);
+
+        String outputStr = new String(decryptMessage);
+
+        System.out.println("加密前：" + message + "\n\r" + "加密后：" + outputStr);
+
+        //验证证书有效性
+        System.out.println("证书有效性：" + CertificateUtil.verifyCertificate(certificatePath));
+    }
+
+    @Test
+    public void testSign() throws Exception {
+        System.out.println("私钥加密——公钥解密");
+        String message = "123456";
+        byte[] data = message.getBytes();
+
+        byte[] encryptMessage = CertificateUtil.encryptByPrivateKey(data, keyStorePath, alias, password);
+
+        byte[] decryptMessage = CertificateUtil.decryptByPublicKey(encryptMessage, certificatePath);
+
+        String outputStr = new String(decryptMessage);
+
+        System.out.println("加密前：" + message + "\n\r" + "解密后：" + outputStr);
+
+        System.out.println("私钥签名——公钥验证签名");
+        String sign = CertificateUtil.sign(encryptMessage, keyStorePath, alias, password);
+        System.out.println("签名：" + sign);
+
+        //验证签名
+        boolean staus = CertificateUtil.verify(encryptMessage, sign, certificatePath);
+        System.out.println("验证结果：" + staus);
+    }
 }
