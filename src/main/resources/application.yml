@@ -34,6 +34,14 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
+
 #设置debug=true，可以看SpringBoot帮我们做了哪些自动配置
-debug: true
+debug: false
+
+#quartz定时任务配置
+quartz:
+   schedule-name: QUARTZ_SCHEDULER
+   thread-count: 10
+   thread-name-prefix: quartz_worker
+   tasks: ReportTimeTask:*/10 * * * * ? *
 
