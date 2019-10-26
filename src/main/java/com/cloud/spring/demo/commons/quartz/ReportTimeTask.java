@@ -1,4 +1,4 @@
-package com.cloud.spring.demo.commons;
+package com.cloud.spring.demo.commons.quartz;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

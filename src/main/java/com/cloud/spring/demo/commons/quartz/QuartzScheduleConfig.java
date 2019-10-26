@@ -1,4 +1,4 @@
-package com.cloud.spring.demo.commons;
+package com.cloud.spring.demo.commons.quartz;
 
 import lombok.Getter;
 import lombok.Setter;

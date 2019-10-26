@@ -45,3 +45,9 @@ quartz:
    thread-name-prefix: quartz_worker
    tasks: ReportTimeTask:*/10 * * * * ? *
 
+#rabbitmq配置
+rabbitmq:
+   host: localhost
+   port: 5672
+   username: guest
+   password: guest

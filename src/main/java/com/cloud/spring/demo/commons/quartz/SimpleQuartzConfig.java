@@ -1,4 +1,4 @@
-package com.cloud.spring.demo.commons;
+package com.cloud.spring.demo.commons.quartz;
 
 import org.quartz.*;
 import org.springframework.context.annotation.Bean;
