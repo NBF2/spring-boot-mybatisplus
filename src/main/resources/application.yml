@@ -8,8 +8,14 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: postgres
+  #配置开发模式 test--测试，dev--开发， prod--正式
   profiles:
     active: test,dev
+  #配置redis
+  redis:
+    host: 127.0.0.1
+    database: 1
+    port: 6379
 
 #mybatisplus配置
 mybatis-plus:
@@ -28,3 +34,6 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
+#设置debug=true，可以看SpringBoot帮我们做了哪些自动配置
+debug: true
+
