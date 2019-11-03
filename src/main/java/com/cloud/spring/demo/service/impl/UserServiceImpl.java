@@ -9,6 +9,7 @@ import com.cloud.spring.demo.entity.UserBean;
 import com.cloud.spring.demo.mapper.UserMapper;
 import com.cloud.spring.demo.service.UserService;
 import lombok.AllArgsConstructor;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -52,7 +53,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserBean> implement
         //获取当前时间
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String time = df.format(new Date());
-        userBean.setUserCreateTime(Timestamp.valueOf(time));;
+        userBean.setUserCreateTime(Timestamp.valueOf(time));
+
+        //密码加密
+        Md5Hash md5Hash = new Md5Hash(userBean.getUserPassword());
+        userBean.setUserPassword(md5Hash.toString());
 
         //插入成功后，自动回写主键到实体类
         result = this.baseMapper.insert(userBean);
@@ -68,5 +73,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserBean> implement
     @Override
     public int updateUserInfo(UserBean userBean) {
         return this.baseMapper.updateById(userBean);
+    }
+
+    @Override
+    public String selectPasswordByUserName(String userName) {
+        LambdaQueryWrapper<UserBean> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(UserBean::getUserName, userName);
+        UserBean userBean = this.baseMapper.selectOne(wrapper);
+        if (null != userBean) {
+            return userBean.getUserPassword();
+        }
+        return null;
     }
 }

@@ -99,11 +99,11 @@
         </dependency>
 
         <!--shiro支持-->
-        <!--<dependency>
+        <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring-boot-starter</artifactId>
             <version>1.4.0</version>
-        </dependency>-->
+        </dependency>
 
         <dependency>
             <groupId>commons-codec</groupId>

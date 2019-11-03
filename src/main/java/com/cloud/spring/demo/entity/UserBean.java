@@ -39,4 +39,7 @@ public class UserBean {
     @ApiModelProperty("用户所属角色名称")
     @TableField(exist = false)
     private String roleName;
+
+    @TableField(exist = false)
+    private boolean rememberMe;
 }

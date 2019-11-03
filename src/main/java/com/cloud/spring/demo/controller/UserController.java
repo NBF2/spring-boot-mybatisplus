@@ -10,6 +10,10 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -104,6 +108,33 @@ public class UserController {
         } else {
             return ResultUtil.fail("删除用户失败");
         }
+    }
+
+    /**
+     * 登录
+     * @param userBean
+     * @return
+     */
+    @GetMapping(value = "/login")
+    public String login(UserBean userBean) {
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken(userBean.getUserName(), userBean.getUserPassword());
+
+        try {
+            token.setRememberMe(userBean.isRememberMe());
+            subject.login(token);
+        } catch (AuthenticationException e) {
+            return e.getMessage();
+        }
+        return "登录成功！";
+
+    }
+
+    @GetMapping("/logout")
+    public String logout() {
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        return "登出成功！";
     }
 
 }
